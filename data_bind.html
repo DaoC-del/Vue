@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+</head>
+<body>
+<div id ="root">
+    単方向<input type="text" v-bind:value="name"/>
+    <!--部分タブはv-modelが適用できない  v-modelは単なる表紙リストだけに適用されてあります。  -->
+    双方向<input type="text" v-model:value="name"/>
+
+    <!--過ちの例-->
+    <h2 v-model:x="test"></h2>
+</div>
+
+</body>
+
+<script>
+    Vue.config.productionTip = false
+    const v=new Vue({
+        el:"#root", //タブへ固定する方法の一つ
+        //Object式、データの構築方法
+        // data:{
+        //     name:`data-bind`,
+        //     test:`demo`
+        //
+        // }
+        //関数式、データの構築方法
+        //Vue実例より管理された関数だちの中に、data()がある
+        data(){
+            console.log(this)
+            return {
+                name:`data-bind`,
+                test:`demo`
+            }
+        }
+    })
+    console.log(v);
+    //タブへ固定する方法の一つ
+    // v.$mount(`#root`)
+
+</script>
+</html>
