@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+
+    <h2>Welcome to {{name}}</h2>
+
+    <!--Vueなら、ボタンのタブを特定の固定方法　2つ-->
+    <button 　v-on:click="showInfo1"> ①クリックしてメッセージを受け取る</button>
+    <!--    よく使うの-->
+<!--    <button @click="showInfo2">②クリックしてメッセージを受け取る</button>-->
+<!--    showInfo2($event,66)は　showInfo2と同じようにボタンのeventを受け取るだけではなく、他の引く数(例えば、以下の66をnumberとして)も受け取れる-->
+    <button @click="showInfo2($event,66)">②クリックしてメッセージを受け取る</button>
+
+</div>
+
+</body>
+
+<script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            name: "yamanashi",
+        },
+        methods: {
+            showInfo1(event) {
+                console.log(event.target.innerText);
+                alert(event.type);
+            },
+            showInfo2(event,number) {
+                console.log(this);
+                alert(event.target.type);
+                console.log("syntax"+number);
+            }
+        }
+        // method(){
+        //
+        // }
+
+    })
+</script>
+</html>
