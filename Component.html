@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+</head>
+<body>
+<div id="root1">
+    <school></school>
+    <student></student>
+    <student></student>
+    <global_hello></global_hello>
+</div>
+
+<div id="root2">
+    <global_hello></global_hello>
+</div>
+
+</body>
+
+<script>
+    Vue.config.productionTip = false
+    const school = Vue.extend({
+        template:`
+          <div>
+              <h2>学校：{{schoolName}}</h2>
+              <h2>アドレス：{{address}}</h2>
+              <button @click="showSchoolName($event)">クリックして学校名を見せる</button>
+          </div>
+        `,
+        data() {
+            return {
+                schoolName: "short",
+                address: "yamanashi"
+            }
+        },
+        methods:{
+            showSchoolName(e){
+                alert(this.schoolName+" "+e.target.type);
+            }
+        }
+    })
+    const student = Vue.extend({
+        template:`
+          <div>
+              <h2>生徒名：{{studentName}}</h2>
+              <h2>年齢：{{age}}</h2>
+          </div>
+        `,
+        data() {
+            return {
+                studentName: "yth",
+                age: 18
+            }
+        }
+    })
+    const global_hello = Vue.extend({
+        template:`
+          <div>
+            <h1>{{msg}}</h1>
+          </div>
+        `,
+        data() {
+            return {
+                msg:"welcome to jp"
+            }
+        }
+    })
+    // コンポーネントのレジスターについて、グローバル変数は必ず　ローカル変数のレジスターの前に設置されるべきです。
+    // さもないと、グローバル変数のレジスターは無効になって行きます。
+    Vue.component("global_hello",global_hello)
+    new Vue({
+        el:"#root1",
+        components:{
+            school: school,
+            student: student
+        }
+    })
+
+    new Vue({
+        el:"#root2"
+    })
+
+</script>
+</html>
