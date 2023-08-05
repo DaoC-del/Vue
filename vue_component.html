@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>template</title>
+  <script type="text/javascript" src="./js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+
+</div>
+
+</body>
+
+<script>
+  Vue.config.productionTip = false
+
+  const vc_1 =Vue.extend({
+    name: `component-1`,
+    template:`
+      <div>
+        <h1>{{msg}}</h1>
+        <button @click="handle($event)">こちら</button>
+      </div>
+    `,
+    data(){
+      return {
+        msg: `app vc_1 テスト`,
+        number: 666
+      }
+    },
+    methods:{
+      handle(e){
+        console.log(e);
+        console.log(this);
+        console.log(`該当VCに対応するは`+this.number);
+      }
+    }
+  })
+
+
+  const vc_2 =Vue.extend({
+    name: `component-2`,
+    template:`
+      <div>
+        <vc_1></vc_1>
+        <h1>{{msg}}</h1>
+        <button @click="handle($event)">こちら</button>
+      </div>
+    `,
+    data(){
+      return {
+        msg: `app vc_2 テスト`,
+        number: 999
+      }
+    },
+    methods:{
+      handle(e){
+        console.log(e);
+        console.log(this);
+        console.log(`該当VCに対応するは`+this.number);
+      }
+    },
+    components:{
+      "vc_1":vc_1
+    }
+
+  })
+
+  const vc_3 =Vue.extend({
+    name: `component-3`,
+    template:`
+      <div>
+        <h1>{{msg}}</h1>
+        <button @click="handle($event)">こちら</button>
+      </div>
+    `,
+    data(){
+      return {
+        msg: `app vc_3 テスト`,
+        number: 721
+      }
+    },
+    methods:{
+      handle(e){
+        console.log(e);
+        console.log(this);
+        console.log(`該当VCに対応するは`+this.number);
+      }
+    }
+  })
+
+  const app =Vue.extend({
+    name: `component-4`,
+    template:`
+<!--      <div>-->
+
+<!--      </div>-->
+      <div>
+        <h1>{{msg}}</h1>
+        <button @click="handle($event)">こちら</button>
+        <vc_2></vc_2>
+        <vc_3></vc_3>
+      </div>
+
+    `,
+    data(){
+      return {
+        msg: `app vc テスト`,
+        number: 114514
+      }
+    },
+    methods: {
+      handle(e) {
+        console.log(e);
+        console.log(this);
+        console.log(`該当VCに対応するは` + this.number);
+      }
+    },
+    components:{
+      "vc_2":vc_2,
+      "vc_3":vc_3,
+    }
+  })
+
+  const vm = new Vue({
+    template: `
+      <app></app>
+    `,
+    el:"#root",
+    components:{
+      "app":app,
+    }
+  })
+</script>
+</html>
