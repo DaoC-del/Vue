@@ -17,7 +17,7 @@
     <hr>
     <Student sex="m"  position="会長"/>
     <hr>
-    <Student :sex=85  position="会長"/>
+    <Student sex="fm"  position="会長"/>
 <!--    <Student sex="女性" wage="10000+1111"/>-->
     <button @click="vm_check">こちら</button>
   </div>
