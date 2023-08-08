@@ -10,7 +10,7 @@ export default {
   name:`Student`,
   data(){
     return {
-      name:`四宮輝夜`,
+      name:`四宮輝夜smalltype`,
       age:`15`,
     }
   },
@@ -36,11 +36,12 @@ export default {
 
 <template>
   <div>
-    <h2>生徒名：{{name}}</h2>
+    <h2>生徒名：{{name | mySlice}}</h2>
     <h2>年齢：{{age}}</h2>
     <h2>性別：{{sex}}</h2>
     <h2>給料：{{wage+1111}}</h2>
     <h2>職種：{{position}}</h2>
+    <input type="text" v-fbind:value="name">
   </div>
 </template>
 
