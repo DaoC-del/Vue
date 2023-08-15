@@ -29,7 +29,7 @@
   import Student from './components/Student.vue'
 
 export default {
-  name: 'App',
+  name: 'demo01',
   components: {
     School,
     Student,
