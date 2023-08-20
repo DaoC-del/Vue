@@ -4,14 +4,14 @@
       <div class="todo-wrap">
           <ListHeader :addTodo="addTodo"/>
           <ItemList
-              :todo="todos"
+              :todos="todos"
               :checkTodo="checkTodo"
               :deleteTodo="deleteTodo"
           />
           <ListFooter
               :todos="todos"
               :checkAllTodo="checkAllTodo"
-              :clearAllTodo="clearAllDoneTodo"
+              :clearAllDoneTodo="clearAllDoneTodo"
           />
       </div>
     </div>
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import Item from './components/todoList/Item.vue'
 import ItemList from './components/todoList/ItemList.vue'
 import ListFooter from './components/todoList/ListFooter.vue'
 import ListHeader from './components/todoList/ListHeader.vue'
